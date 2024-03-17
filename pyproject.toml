@@ -1,0 +1,50 @@
+[project]
+name = "cx.lmn.tag20210930.test2"
+requires-python = ">= 3.12"
+dynamic = ["version"]
+readme = "README.md"
+license = { text = "MIT License" }
+urls.repository = "https://github.com/AlexLemna/cx.lmn.tag20210930.test2"
+
+[project.optional-dependencies]
+dev = [
+    #
+    # installing dependencies
+    # -----------------------
+    "pip>=21.2",
+    "pip-tools",
+    #
+    # style
+    # -----
+    "black",
+    #
+    # building the package
+    # --------------------
+    "build",
+    "setuptools>=45",
+    "setuptools_scm[toml]>=6.2", # <-- for dynamic version control
+    #
+    # publishing the package to PyPI
+    # ------------------------------
+    "twine",
+]
+
+
+[project.scripts]
+test2 = "cx.lmn.tag20210930.test2:__main__.run"
+
+[build-system]
+requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[tool.black]
+line-length = 80
+target-version = ['py312']
+
+
+[tool.pip-tools]
+allow-unsafe = true
+generate-hashes = true
+resolver = "backtracking"
+
+[tool.setuptools_scm]
